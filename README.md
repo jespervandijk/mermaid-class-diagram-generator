@@ -1,0 +1,1 @@
+# domain-model-class-diagram-generator
