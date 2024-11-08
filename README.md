@@ -120,6 +120,6 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ## 📫 Contact
 
-For any questions or support, please open an issue on the [GitHub repository](https://github.com/yourusername/MermaidClassDiagramGenerator).
+For any questions or support, please open an issue on the [GitHub repository](https://github.com/jespervandijk/mermaid-class-diagram-generator).
 
 ---
