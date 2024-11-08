@@ -56,7 +56,7 @@ namespace YourNamespace
     {
         static void Main(string[] args)
         {
-            var generator = new MermaidJsDiagramGenerator(
+            var generator = new DiagramGenerator(
                 outputFilePath: "diagram.md",
                 assembliesToScan: new List<Assembly> { Assembly.GetExecutingAssembly() },
                 domainTypes: new List<Type> { typeof(Auto), typeof(Wheels) },
