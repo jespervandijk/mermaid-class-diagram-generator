@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Generator\Generator.csproj" />
+      <ProjectReference Include="..\MermaidClassDiagramGenerator\MermaidClassDiagramGenerator.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace Generator;
+namespace MermaidClassDiagramGenerator;
 
-public class MermaidClassDiagramGenerator
+public class DiagramGenerator
 {
     private readonly StringBuilder _classBuilder = new();
     private readonly StringBuilder _relationBuilder = new();
@@ -15,7 +15,7 @@ public class MermaidClassDiagramGenerator
     private readonly bool _generateWithoutProperties;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MermaidClassDiagramGenerator"/> class for creating and configuring Mermaid.js class diagrams.
+    /// Initializes a new instance of the <see cref="DiagramGenerator"/> class for creating and configuring Mermaid.js class diagrams.
     /// </summary>
     /// <param name="outputFilePath">
     /// The file path where the generated Mermaid.js diagram will be saved. 
@@ -36,7 +36,7 @@ public class MermaidClassDiagramGenerator
     /// A boolean flag indicating whether to generate the class diagram without including property details.
     /// If set to <c>true</c>, the diagram will display class names without listing their properties.
     /// </param>
-    public MermaidClassDiagramGenerator(string outputFilePath, List<Assembly> assembliesToScan, List<Type> domainTypes, bool generateWithoutProperties = false)
+    public DiagramGenerator(string outputFilePath, List<Assembly> assembliesToScan, List<Type> domainTypes, bool generateWithoutProperties = false)
     {
         _outputFilePath = outputFilePath;
         _domainTypes = domainTypes;

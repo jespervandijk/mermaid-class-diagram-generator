@@ -1,9 +1,9 @@
 ﻿// Example domain classes
 
 using System.Reflection;
-using Generator;
+using MermaidClassDiagramGenerator;
 
-var generator = new MermaidClassDiagramGenerator(
+var generator = new DiagramGenerator(
     outputFilePath: "../../../diagram.md",
     assembliesToScan: new List<Assembly> { Assembly.GetExecutingAssembly() },
     domainTypes: new List<Type> { typeof(Auto), typeof(Wheels) },
