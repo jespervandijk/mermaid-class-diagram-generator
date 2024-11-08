@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Reflection;
 using System.Text;
 
-namespace Haas.Documentation.Utils;
+namespace MermaidClassDiagramGenerator;
 
 public static class TypeExtensions
 {

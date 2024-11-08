@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Haas.Documentation.Utils;
+namespace MermaidClassDiagramGenerator;
 
 public static class PropertyExensions
 {

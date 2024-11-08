@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace Haas.Documentation.Utils;
+namespace MermaidClassDiagramGenerator;
 
 public class CsToMermaid
 {
