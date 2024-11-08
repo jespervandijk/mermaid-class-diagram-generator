@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>MermaidClassDiagramGenerator</PackageId>
+        <PackageId>Generator</PackageId>
         <Author>Jesper van Dijk</Author>
         <Product>MermaidClassDiagramGenerator</Product>
         <Description>Quickly generate stunning Mermaid.js class diagrams from your C# domain models and export them to Markdown.</Description>

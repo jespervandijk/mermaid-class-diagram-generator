@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace MermaidClassDiagramGenerator;
+namespace Generator;
 
 internal static class CsToMermaid
 {

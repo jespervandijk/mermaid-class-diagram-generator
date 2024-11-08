@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MermaidClassDiagramGenerator;
+namespace Generator;
 
 internal static class PropertyExensions
 {

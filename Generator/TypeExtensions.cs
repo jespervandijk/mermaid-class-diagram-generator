@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Text;
 
-namespace MermaidClassDiagramGenerator;
+namespace Generator;
 
 internal static class TypeExtensions
 {
