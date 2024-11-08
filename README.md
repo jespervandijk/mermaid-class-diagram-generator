@@ -1,1 +1,1 @@
-# domain-model-class-diagram-generator
+# Mermaid Class Diagram Generator
