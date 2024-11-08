@@ -97,16 +97,17 @@ namespace YourNamespace
 After running the generator, your diagram.md might contain:
 ```mermaid
 classDiagram
-    class Auto {
-        +int Id
-        +string Model
-        +Wheels Wheels
-    }
-    class Wheels {
-        +int Count
-        +string Type
-    }
-    Auto --> Wheels
+class Auto{
+  +Int32 Id
+  +String Model
+}
+
+class Wheels{
+  +Int32 Count
+  +String Type
+}
+
+Auto o-- Wheels
 ```
 
 ## 📜 License
