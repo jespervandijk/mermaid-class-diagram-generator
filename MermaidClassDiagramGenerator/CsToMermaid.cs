@@ -3,13 +3,13 @@ using System.Text;
 
 namespace MermaidClassDiagramGenerator;
 
-public class CsToMermaid
+internal static class CsToMermaid
 {
-    public static void StartClassDiagram(StringBuilder builder)
+    internal static void StartClassDiagram(StringBuilder builder)
     {
         builder.Append("classDiagram\n");
     }
-    public static void CreateClass(StringBuilder builder, Type classType, List<PropertyInfo> properties)
+    internal static void CreateClass(StringBuilder builder, Type classType, List<PropertyInfo> properties)
     {
         var innerBuilder = new StringBuilder();
         if (properties.Count == 0)
@@ -34,7 +34,7 @@ public class CsToMermaid
         }
         innerBuilder.Clear();
     }
-    public static void CreateComposition(StringBuilder builder, Type parent, Type child)
+    internal static void CreateComposition(StringBuilder builder, Type parent, Type child)
     {
         var stringToAdd = $"{parent.GetFullGenericTypeName()} o-- {child.GetFullGenericTypeName()}";
         if (!builder.ToString().Contains(stringToAdd))
@@ -42,7 +42,7 @@ public class CsToMermaid
             builder.AppendLine(stringToAdd);
         }
     }
-    public static void CreateCompositionCollection(StringBuilder builder, Type parent, Type child)
+    internal static void CreateCompositionCollection(StringBuilder builder, Type parent, Type child)
     {
         var stringToAdd = $"""{parent.GetFullGenericTypeName()} "0" o-- "*" {child.GetFullGenericTypeName()}""";
         if (!builder.ToString().Contains(stringToAdd))
@@ -51,7 +51,7 @@ public class CsToMermaid
         }
     }
 
-    public static void CreateInheritance(StringBuilder builder, Type parent, Type child)
+    internal static void CreateInheritance(StringBuilder builder, Type parent, Type child)
     {
         var stringToAdd = $"{parent.GetFullGenericTypeName()} <|-- {child.GetFullGenericTypeName()}";
         if (!builder.ToString().Contains(stringToAdd))
@@ -59,8 +59,8 @@ public class CsToMermaid
             builder.AppendLine(stringToAdd);
         }
     }
-    
-    public static string GetPropertyAccessModifier(PropertyInfo property)
+
+    private static string GetPropertyAccessModifier(PropertyInfo property)
     {
         var getMethod = property.GetMethod;
         var setMethod = property.SetMethod;
@@ -96,7 +96,8 @@ public class CsToMermaid
             _ => throw new ArgumentException("Unknown access modifier"),
         };
     }
-    public enum AccesModifier
+
+    private enum AccesModifier
     {
         Public,
         Private,
@@ -105,7 +106,8 @@ public class CsToMermaid
         ProtectedInternal,
         PrivateProtected,
     }
-    public static AccesModifier GetMethodAccess(MethodInfo method)
+
+    private static AccesModifier GetMethodAccess(MethodInfo method)
     {
         if (method.IsPublic) return AccesModifier.Public;
         if (method.IsPrivate) return AccesModifier.Private;

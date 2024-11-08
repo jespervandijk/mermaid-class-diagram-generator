@@ -2,9 +2,8 @@
 
 namespace MermaidClassDiagramGenerator;
 
-public static class PropertyExensions
+internal static class PropertyExensions
 {
-    public static bool IsValueProperty(this PropertyInfo prop) =>
+    internal static bool IsValueProperty(this PropertyInfo prop) =>
         prop.PropertyType.IsSimpleBuiltInType() || prop.PropertyType.IsValueType;
-    
 }

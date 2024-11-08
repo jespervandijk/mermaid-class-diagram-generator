@@ -3,10 +3,10 @@ using System.Text;
 
 namespace MermaidClassDiagramGenerator;
 
-public static class TypeExtensions
+internal static class TypeExtensions
 {
-    private static readonly HashSet<Type> SimpleBuiltInTypes = new HashSet<Type>
-    {
+    private static readonly HashSet<Type> SimpleBuiltInTypes =
+    [
         typeof(bool),
         typeof(byte),
         typeof(sbyte),
@@ -21,14 +21,15 @@ public static class TypeExtensions
         typeof(short),
         typeof(ushort),
         typeof(string),
-        typeof(object),
-    };
+        typeof(object)
+    ];
 
-    public static bool IsSimpleBuiltInType(this Type type)
+    internal static bool IsSimpleBuiltInType(this Type type)
     {
         return SimpleBuiltInTypes.Contains(type);
     }
-    public static Type GetNonNullableType(this Type type)
+    
+    internal static Type GetNonNullableType(this Type type)
     {
         if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
         {
@@ -37,7 +38,7 @@ public static class TypeExtensions
         return type;
     }
     
-    public static bool IsCollectionType(this Type type, out Type? elementType)
+    internal static bool IsCollectionType(this Type type, out Type? elementType)
     {
         elementType = null;
 
@@ -76,7 +77,7 @@ public static class TypeExtensions
         return false;
     }
     
-    public static bool InheritsFromGenericType(this Type type, Type genericType)
+    internal static bool InheritsFromGenericType(this Type type, Type genericType)
     {
         var baseType = type.BaseType;
         if (baseType != null && baseType != typeof(object))
@@ -89,7 +90,7 @@ public static class TypeExtensions
         return false;
     }
     
-    public static string GetFullGenericTypeName(this Type type)
+    internal static string GetFullGenericTypeName(this Type type)
     {
         if (!type.IsGenericType)
         {
