@@ -5,13 +5,22 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>MermaidClassDiagramGenerator</PackageId>
-        <Version>1.0.0</Version>
         <Author>Jesper van Dijk</Author>
         <Product>MermaidClassDiagramGenerator</Product>
         <Description>Quickly generate stunning Mermaid.js class diagrams from your C# domain models and export them to Markdown.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>1.0.0</Version>
+        
+        <PackageReleaseNotes>
+            <![CDATA[
+      ### 1.0.0
+      - Initial version.
+      - Recursive class diagram generation.
+      - Inheritance supported.
+      ]]>
+        </PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
