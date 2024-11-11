@@ -130,6 +130,6 @@ public static class TypeExtensions
         }
         typeName.Append('>');
 
-        return typeName.ToString();
+        return $"`{typeName}`";
     }
 }
