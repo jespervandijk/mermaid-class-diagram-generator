@@ -1,6 +1,6 @@
 ## Exclude Attribute
-This example shows how to exclude specific classes from the diagram using the [ExcludeFromDiagram] attribute.
-This can be helpful when you have technical or base classes, such as Aggregate<T>, that are not part of the main domain and would clutter the diagram.
+This example shows how to exclude specific classes from the diagram using the `[ExcludeFromDiagram]` attribute.
+This can be helpful when you have technical or base classes, such as `Aggregate<T>`, that are not part of the main domain and would clutter the diagram.
 
 ### Code:
 ```cs
