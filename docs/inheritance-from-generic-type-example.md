@@ -1,7 +1,7 @@
-## Inherticance From Generic Type
-This example handles classes that inherit from a generic base type, such as Aggregate<T>.
-Using the InheritsFromGenericType extension method, it scans for types that derive from Aggregate<>, ensuring that only the relevant derived types are included in the diagram.
-Note: Related classes (e.g., Wheels) will still appear in the output due to the recursive nature of the generator, capturing all nested and related types.
+## Get Aggregates Using Inheritance
+This example demonstrates using the `InheritsFromGenericType` extension method to gather all classes that inherit from a generic base type, such as `Aggregate<T>`.
+This approach is useful when working with aggregate roots in your domain model.
+You only need to pass the aggregate root types to the generator, and the recursive scanning will automatically include related types (e.g., `Wheels`) in the diagram, ensuring a complete representation of the aggregate and its components.
 
 ### Code:
 ```cs
