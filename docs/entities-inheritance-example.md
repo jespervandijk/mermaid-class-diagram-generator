@@ -1,5 +1,5 @@
 ## Get All Entities with Inheritance
-This example demonstrates using the `InheritsFrom` extension method to gather all classes that inherit from a base Entity class.
+This example demonstrates using the `InheritsFrom` extension method to gather all classes that inherit from a base `Entity` class.
 This approach is useful when your domain model consists only of entities, rather than aggregates, and you want to include all derived entities in the diagram.
 By filtering for classes that inherit from Entity, you can ensure that only the relevant types are passed to the generator for a clear, focused representation of your domain.
 
