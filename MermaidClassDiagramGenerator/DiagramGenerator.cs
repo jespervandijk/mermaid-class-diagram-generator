@@ -65,6 +65,11 @@ public class DiagramGenerator
 
     private void CreateClassRecursive(Type type)
     {
+        if (type.ShouldExcludeFromDiagram())
+        {
+            return;
+        }
+        
         _passedTypes.Add(type);
 
         var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -125,7 +130,7 @@ public class DiagramGenerator
     private void CreateInheritance(Type type)
     {
         var baseType = type.BaseType;
-        if (baseType is null) return;
+        if (baseType is null || baseType.ShouldExcludeFromDiagram()) return;
         
         if (baseType.IsGenericType && _allTypesAssemblies.Contains(baseType.GetGenericTypeDefinition()))
         {

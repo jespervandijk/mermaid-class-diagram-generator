@@ -3,7 +3,7 @@ using MermaidClassDiagramGenerator;
 
 namespace Example.Examples;
 
-public static class GenericInheritanceExample
+public static class ExcludeFromDiagramExample
 {
     public static void Run()
     {
@@ -12,7 +12,7 @@ public static class GenericInheritanceExample
             .ToList();
         
         var generator = new DiagramGenerator(
-            outputFilePath: "../../../Outputs/genericInheritanceExample.md",
+            outputFilePath: "../../../Outputs/excludeFromDiagram.md",
             assembliesToScan: new List<Assembly> { assembly },
             domainTypes: aggregateTypes,
             generateWithoutProperties: false
@@ -20,9 +20,10 @@ public static class GenericInheritanceExample
             
         generator.Generate();
 
-        Console.WriteLine("Mermaid.js class diagram generated successfully at genericInheritanceExample.md");
+        Console.WriteLine("Mermaid.js class diagram generated successfully at excludeFromDiagram.md");
     }
     
+    [ExcludeFromDiagram]
     public abstract class Aggregate<T>
     {
     }
