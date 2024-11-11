@@ -78,10 +78,7 @@ public class DiagramGenerator
         
         CsToMermaid.CreateClass(_classBuilder, type, valueProperties);
 
-        if (type.BaseType is not null && _allTypesAssemblies.Contains(type.BaseType))
-        {
-            CsToMermaid.CreateInheritance(_relationBuilder, type.BaseType, type);
-        }
+        CreateInheritance(type);
         
         foreach (var property in properties)
         {
@@ -122,6 +119,21 @@ public class DiagramGenerator
         foreach (var inheritor in inheritors)
         {
             CreateClassRecursive(inheritor);
+        }
+    }
+
+    private void CreateInheritance(Type type)
+    {
+        var baseType = type.BaseType;
+        if (baseType is null) return;
+        
+        if (baseType.IsGenericType && _allTypesAssemblies.Contains(baseType.GetGenericTypeDefinition()))
+        {
+            CsToMermaid.CreateInheritance(_relationBuilder, baseType.GetGenericTypeDefinition(), type);
+        }
+        else if (_allTypesAssemblies.Contains(baseType))
+        {
+            CsToMermaid.CreateInheritance(_relationBuilder, baseType, type);
         }
     }
 }

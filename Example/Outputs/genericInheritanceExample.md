@@ -9,4 +9,5 @@ class Wheels{
   +String Type
 }
 
+Aggregate<T> <|-- Auto
 Auto o-- Wheels
