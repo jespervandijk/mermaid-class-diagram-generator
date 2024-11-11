@@ -1,5 +1,5 @@
 ## Get All Entities with an Interface
-This example uses the `Implements` extension method to gather all classes that implement an IEntity interface.
+This example uses the `Implements` extension method to gather all classes that implement an `IEntity` interface.
 It’s helpful in domains where entities are defined by an interface rather than a base class.
 By filtering for types that implement `IEntity`, you can ensure that only relevant, interface-based entities are included in the diagram, providing a clear view of the domain’s structure.
 
