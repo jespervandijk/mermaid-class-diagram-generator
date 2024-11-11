@@ -43,7 +43,7 @@ The easiest way to use MermaidClassDiagramGenerator is by adding it to a console
 3. **Implement the Generator:**
    - Use the following example to set up and generate your class diagram.
 
-### Example:
+### Basic Example:
 ```cs
 using System;
 using System.Collections.Generic;
@@ -109,6 +109,9 @@ class Wheels{
 
 Auto o-- Wheels
 ```
+
+## Advanced Examples
+- [Exclude Attribute](docs/ExcludeAttributeExample)
 
 ## 📜 License
 
