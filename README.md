@@ -111,7 +111,7 @@ Auto o-- Wheels
 ```
 
 ## Advanced Examples
-- [Exclude Attribute](docs/ExcludeAttributeExample)
+- [Exclude Attribute](docs/ExcludeAttributeExample.md)
 
 ## 📜 License
 
