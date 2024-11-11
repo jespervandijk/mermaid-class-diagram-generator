@@ -3,8 +3,26 @@ using System.Text;
 
 namespace MermaidClassDiagramGenerator;
 
-internal static class TypeExtensions
+public static class TypeExtensions
 {
+    public static bool InheritsFromGenericType(this Type type, Type genericBaseType)
+    {
+        var baseType = type.BaseType;
+        return baseType is not null && 
+               baseType != typeof(object) && 
+               baseType.IsGenericType &&
+               baseType.GetGenericTypeDefinition() == genericBaseType;
+    }
+
+    public static bool InheritsFrom(this Type type, Type baseType)
+        => type.BaseType == baseType;
+
+    public static bool Implements(this Type type, Type interfaceType) 
+        => interfaceType.IsInterface && type.GetInterfaces().Contains(interfaceType);
+    
+    public static bool ImplementsGenericInterface(this Type type, Type genericInterfaceType) 
+        => genericInterfaceType.IsInterface && type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == genericInterfaceType);
+    
     private static readonly HashSet<Type> SimpleBuiltInTypes =
     [
         typeof(bool),
@@ -74,19 +92,6 @@ internal static class TypeExtensions
             return true;
         }
 
-        return false;
-    }
-    
-    internal static bool InheritsFromGenericType(this Type type, Type genericType)
-    {
-        var baseType = type.BaseType;
-        if (baseType != null && baseType != typeof(object))
-        {
-            if (baseType.IsGenericType && baseType.GetGenericTypeDefinition() == genericType)
-            {
-                return true;
-            }
-        }
         return false;
     }
     

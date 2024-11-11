@@ -1,0 +1,42 @@
+﻿using System.Reflection;
+using MermaidClassDiagramGenerator;
+
+namespace Example.Examples;
+
+public static class GenericInheritanceExample
+{
+    public static void Run()
+    {
+        var assembly = Assembly.GetExecutingAssembly();
+        var aggregateTypes = assembly.GetTypes().Where(type => type.InheritsFromGenericType(typeof(Aggregate<>)))
+            .ToList();
+        
+        var generator = new DiagramGenerator(
+            outputFilePath: "../../../Outputs/genericInheritanceExample.md",
+            assembliesToScan: new List<Assembly> { assembly },
+            domainTypes: aggregateTypes,
+            generateWithoutProperties: false
+        );
+            
+        generator.Generate();
+
+        Console.WriteLine("Mermaid.js class diagram generated successfully at genericInheritanceExample.md");
+    }
+
+    public abstract class Aggregate<T>
+    {
+    }
+
+    public class Auto : Aggregate<Auto>
+    {
+        public int Id { get; set; }
+        public string Model { get; set; }
+        public Wheels Wheels { get; set; }
+    }
+
+    public class Wheels
+    {
+        public int Count { get; set; }
+        public string Type { get; set; }
+    }
+}

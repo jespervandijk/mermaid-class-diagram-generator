@@ -11,4 +11,8 @@
       <ProjectReference Include="..\MermaidClassDiagramGenerator\MermaidClassDiagramGenerator.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Outputs\" />
+    </ItemGroup>
+
 </Project>
