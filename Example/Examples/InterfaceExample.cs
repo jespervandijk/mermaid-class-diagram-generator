@@ -25,7 +25,6 @@ public class InterfaceExample
 
     public interface IEntity
     {
-        
     }
 
     public class Auto : IEntity
