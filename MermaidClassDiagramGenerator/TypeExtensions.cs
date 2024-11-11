@@ -7,7 +7,7 @@ public static class TypeExtensions
 {
     public static bool ShouldExcludeFromDiagram(this Type type)
     {
-        return Attribute.IsDefined(type, typeof(ExcludeFromDiagramAttribute));
+        return Attribute.IsDefined(type, typeof(ExcludeFromDiagramAttribute), inherit: false);
     }
     public static bool InheritsFromGenericType(this Type type, Type genericBaseType)
     {
