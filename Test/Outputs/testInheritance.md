@@ -1,6 +1,4 @@
 classDiagram
-class Vehicle
+class Driver
 
-class Car
-
-Vehicle <|-- Car
+`Person<T>` <|-- Driver
