@@ -5,6 +5,7 @@ You only need to pass the aggregate root types to the generator, and the recursi
 
 ### Code:
 ```cs
+()
 var assembly = Assembly.GetExecutingAssembly();
         var aggregateTypes = assembly.GetTypes().Where(type => type.InheritsFromGenericType(typeof(Aggregate<>)))
             .ToList();
@@ -24,7 +25,7 @@ public abstract class Aggregate<T>
 {
 }
 
-public class Auto : Aggregate<Auto>
+public class Car : Aggregate<Car>
 {
     public int Id { get; set; }
     public string Model { get; set; }
@@ -41,7 +42,7 @@ public class Wheels
 ### Output:
 ```mermaid
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -51,6 +52,8 @@ class Wheels{
   +String Type
 }
 
-`Aggregate<T>` <|-- Auto
-Auto o-- Wheels
+class `Aggregate<T>`
+
+Car o-- Wheels
+`Aggregate<T>` <|-- Car
 ```
