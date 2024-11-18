@@ -75,6 +75,8 @@ public class DiagramGenerator
         var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         var notInheritedProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         
+        // Document Class
+        
         var valueProperties =
             _generateWithoutProperties ? [] :
             properties
@@ -83,7 +85,7 @@ public class DiagramGenerator
         
         CsToMermaid.CreateClass(_classBuilder, type, valueProperties);
         
-        CreateInheritance(type);
+        // Document Related Classes
         
         foreach (var property in properties)
         {
@@ -119,6 +121,10 @@ public class DiagramGenerator
             }
         }
         
+        // Inheritance
+        
+        DocumentBaseType(type);
+        
         var inheritors = _allTypesAssemblies.Where(t => t.IsSubclassOf(type) || t.InheritsFromGenericType(type));
 
         foreach (var inheritor in inheritors)
@@ -127,7 +133,7 @@ public class DiagramGenerator
         }
     }
 
-    private void CreateInheritance(Type type)
+    private void DocumentBaseType(Type type)
     {
         var baseType = type.BaseType;
         if (baseType is null || baseType.ShouldExcludeFromDiagram()) return;
