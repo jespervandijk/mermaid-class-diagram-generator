@@ -70,7 +70,7 @@ namespace YourNamespace
     }
 
     // Example domain classes
-    public class Auto
+    public class Car
     {
         public int Id { get; set; }
         public string Model { get; set; }
@@ -97,7 +97,7 @@ namespace YourNamespace
 After running the generator, your diagram.md might contain:
 ```mermaid
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -107,7 +107,7 @@ class Wheels{
   +String Type
 }
 
-Auto o-- Wheels
+Car o-- Wheels
 ```
 
 ## Advanced Examples
