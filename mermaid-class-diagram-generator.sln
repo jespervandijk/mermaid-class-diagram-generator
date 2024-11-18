@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MermaidClassDiagramGenerato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{7AB980E0-5A10-4C7C-B731-F5E485C7FA1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C72E2F48-A863-4081-B6B0-F79B114C40B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7AB980E0-5A10-4C7C-B731-F5E485C7FA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AB980E0-5A10-4C7C-B731-F5E485C7FA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AB980E0-5A10-4C7C-B731-F5E485C7FA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72E2F48-A863-4081-B6B0-F79B114C40B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72E2F48-A863-4081-B6B0-F79B114C40B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72E2F48-A863-4081-B6B0-F79B114C40B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72E2F48-A863-4081-B6B0-F79B114C40B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
