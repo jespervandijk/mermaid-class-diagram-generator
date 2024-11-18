@@ -24,7 +24,7 @@ public abstract class Entity
 {
 }
 
-public class Auto : Entity
+public class Car : Entity
 {
     public int Id { get; set; }
     public string Model { get; set; }
@@ -41,7 +41,7 @@ public class Wheels : Entity
 ### Output:
 ```mermaid
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -51,7 +51,9 @@ class Wheels{
   +String Type
 }
 
-Entity <|-- Auto
+class Entity
+
 Entity <|-- Wheels
-Auto o-- Wheels
+Car o-- Wheels
+Entity <|-- Car
 ```
