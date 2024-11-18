@@ -4,12 +4,12 @@ class Auto{
   +String Model
 }
 
-class `Aggregate<T>`
-
 class Wheels{
   +Int32 Count
   +String Type
 }
 
-`Aggregate<T>` <|-- Auto
+class `Aggregate<T>`
+
 Auto o-- Wheels
+`Aggregate<T>` <|-- Auto

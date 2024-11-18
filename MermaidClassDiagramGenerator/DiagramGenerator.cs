@@ -7,7 +7,7 @@ public class DiagramGenerator
 {
     private readonly StringBuilder _classBuilder = new();
     private readonly StringBuilder _relationBuilder = new();
-    
+
     private readonly string _outputFilePath;
     private readonly List<Type> _domainTypes;
     private readonly List<Type> _allTypesAssemblies;
@@ -36,7 +36,8 @@ public class DiagramGenerator
     /// A boolean flag indicating whether to generate the class diagram without including property details.
     /// If set to <c>true</c>, the diagram will display class names without listing their properties.
     /// </param>
-    public DiagramGenerator(string outputFilePath, List<Assembly> assembliesToScan, List<Type> domainTypes, bool generateWithoutProperties = false)
+    public DiagramGenerator(string outputFilePath, List<Assembly> assembliesToScan, List<Type> domainTypes,
+        bool generateWithoutProperties = false)
     {
         _outputFilePath = outputFilePath;
         _domainTypes = domainTypes;
@@ -44,22 +45,22 @@ public class DiagramGenerator
         _allTypesAssemblies = assembliesToScan.SelectMany(a => a.GetTypes()).ToList();
         _passedTypes = [];
     }
-    
+
     /// <summary>
     /// Generates the Mermaid.js class diagram.
     /// </summary>
     public void Generate()
     {
         _classBuilder.Clear();
-        CsToMermaid.StartClassDiagram(_classBuilder) ;
-        
+        CsToMermaid.StartClassDiagram(_classBuilder);
+
         foreach (var domainType in _domainTypes)
         {
             CreateClassRecursive(domainType);
         }
 
         var content = _classBuilder.ToString() + _relationBuilder.ToString();
-        
+
         File.WriteAllText(_outputFilePath, content);
     }
 
@@ -69,62 +70,75 @@ public class DiagramGenerator
         {
             return;
         }
-        
+
         _passedTypes.Add(type);
 
         var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        var notInheritedProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        
+        var notInheritedProperties =
+            type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
         // Document Class
-        
+
         var valueProperties =
-            _generateWithoutProperties ? [] :
-            properties
-            .Where(prop => prop.IsValueProperty())
-            .ToList(); 
-        
+            _generateWithoutProperties
+                ? []
+                : properties
+                    .Where(prop => prop.IsValueProperty())
+                    .ToList();
+
         CsToMermaid.CreateClass(_classBuilder, type, valueProperties);
-        
+
         // Document Related Classes
-        
+
         foreach (var property in properties)
         {
-            if (!property.IsValueProperty() && property.PropertyType.IsCollectionType(out var innerType))
+            if (property.IsValueProperty())
             {
-                if (innerType is not null && !_passedTypes.Contains(innerType) && _allTypesAssemblies.Contains(innerType))
-                {
-                    CreateClassRecursive(innerType.GetNonNullableType());
-                }
+                continue;
             }
-            else if(!property.IsValueProperty() && 
-                    property.PropertyType.IsClass && 
-                    !_passedTypes.Contains(property.PropertyType) && 
-                    _allTypesAssemblies.Contains(property.PropertyType))
+
+            if (property.PropertyType.IsCollectionType(out var innerType))
+            {
+                if (innerType is null || !_allTypesAssemblies.Contains(innerType))
+                {
+                    continue;
+                }
+                
+                CreateClassRecursive(innerType.GetNonNullableType());
+            }
+
+            else if (property.PropertyType.IsClass)
             {
                 CreateClassRecursive(property.PropertyType);
             }
-            
         }
         
         foreach (var property in notInheritedProperties)
         {
-            if (!property.IsValueProperty() && property.PropertyType.IsCollectionType(out var innerType))
+            if (property.IsValueProperty())
             {
-                if (innerType is not null && _allTypesAssemblies.Contains(innerType))
-                {
-                    CsToMermaid.CreateCompositionCollection(_relationBuilder, type, innerType);
-                }
+                continue;
             }
-            else if(!property.IsValueProperty() && property.PropertyType.IsClass && _allTypesAssemblies.Contains(property.PropertyType))
+
+            if (property.PropertyType.IsCollectionType(out var innerType))
+            {
+                if (innerType is null || !_allTypesAssemblies.Contains(innerType))
+                {
+                    continue;
+                }
+                
+                CsToMermaid.CreateCompositionCollection(_relationBuilder, type, innerType);
+            }
+            else if (property.PropertyType.IsClass)
             {
                 CsToMermaid.CreateComposition(_relationBuilder, type, property.PropertyType);
             }
         }
-        
+
         // Inheritance
-        
+
         DocumentBaseType(type);
-        
+
         var inheritors = _allTypesAssemblies.Where(t => t.IsSubclassOf(type) || t.InheritsFromGenericType(type));
 
         foreach (var inheritor in inheritors)
@@ -137,7 +151,7 @@ public class DiagramGenerator
     {
         var baseType = type.BaseType;
         if (baseType is null || baseType.ShouldExcludeFromDiagram()) return;
-        
+
         if (baseType.IsGenericType && _allTypesAssemblies.Contains(baseType.GetGenericTypeDefinition()))
         {
             CreateClassRecursive(baseType.GetGenericTypeDefinition());
