@@ -27,7 +27,7 @@ public static class GenericInheritanceExample
     {
     }
 
-    public class Auto : Aggregate<Auto>
+    public class Car : Aggregate<Car>
     {
         public int Id { get; set; }
         public string Model { get; set; }

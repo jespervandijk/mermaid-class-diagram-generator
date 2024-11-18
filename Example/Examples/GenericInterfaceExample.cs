@@ -27,7 +27,7 @@ public class GenericInterfaceExample
     {
     }
 
-    public class Auto : IAggregate<Auto>
+    public class Car : IAggregate<Car>
     {
         public int Id { get; set; }
         public string Model { get; set; }

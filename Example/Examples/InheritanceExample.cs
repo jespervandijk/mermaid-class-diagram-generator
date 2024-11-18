@@ -27,7 +27,7 @@ public static class InheritanceExample
     {
     }
 
-    public class Auto : Entity
+    public class Car : Entity
     {
         public int Id { get; set; }
         public string Model { get; set; }

@@ -1,5 +1,5 @@
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -11,5 +11,5 @@ class Wheels{
 
 class `Aggregate<T>`
 
-Auto o-- Wheels
-`Aggregate<T>` <|-- Auto
+Car o-- Wheels
+`Aggregate<T>` <|-- Car

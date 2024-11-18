@@ -10,7 +10,7 @@ public class SimpleExample
         var generator = new DiagramGenerator(
             outputFilePath: "../../../Outputs/simpleExample.md",
             assembliesToScan: new List<Assembly> { Assembly.GetExecutingAssembly() },
-            domainTypes: new List<Type> { typeof(Auto), typeof(Wheels) },
+            domainTypes: new List<Type> { typeof(Car), typeof(Wheels) },
             generateWithoutProperties: false
         );
 
@@ -19,7 +19,7 @@ public class SimpleExample
         Console.WriteLine("Mermaid.js class diagram generated successfully at simpleExample.md");
     }
 
-    public class Auto
+    public class Car
     {
         public int Id { get; set; }
         public string Model { get; set; }

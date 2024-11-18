@@ -27,7 +27,7 @@ public class InterfaceExample
     {
     }
 
-    public class Auto : IEntity
+    public class Car : IEntity
     {
         public int Id { get; set; }
         public string Model { get; set; }

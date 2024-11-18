@@ -1,5 +1,5 @@
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -9,4 +9,4 @@ class Wheels{
   +String Type
 }
 
-Auto o-- Wheels
+Car o-- Wheels

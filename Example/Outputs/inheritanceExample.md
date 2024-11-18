@@ -1,5 +1,5 @@
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -12,5 +12,5 @@ class Wheels{
 class Entity
 
 Entity <|-- Wheels
-Auto o-- Wheels
-Entity <|-- Auto
+Car o-- Wheels
+Entity <|-- Car
