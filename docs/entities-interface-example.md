@@ -24,7 +24,7 @@ public interface IEntity
 {
 }
 
-public class Auto : IEntity
+public class Car : IEntity
 {
     public int Id { get; set; }
     public string Model { get; set; }
@@ -41,7 +41,7 @@ public class Wheels : IEntity
 ### Output:
 ```mermaid
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -51,5 +51,5 @@ class Wheels{
   +String Type
 }
 
-Auto o-- Wheels
+Car o-- Wheels
 ```
