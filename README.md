@@ -59,7 +59,7 @@ namespace YourNamespace
             var generator = new DiagramGenerator(
                 outputFilePath: "diagram.md",
                 assembliesToScan: new List<Assembly> { Assembly.GetExecutingAssembly() },
-                domainTypes: new List<Type> { typeof(Auto), typeof(Wheels) },
+                domainTypes: new List<Type> { typeof(Car), typeof(Wheels) },
                 generateWithoutProperties: false
             );
             
