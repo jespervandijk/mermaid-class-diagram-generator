@@ -4,11 +4,13 @@ class Auto{
   +String Model
 }
 
+class Entity
+
 class Wheels{
   +Int32 Count
   +String Type
 }
 
-Entity <|-- Auto
 Entity <|-- Wheels
+Entity <|-- Auto
 Auto o-- Wheels

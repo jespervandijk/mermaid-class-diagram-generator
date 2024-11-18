@@ -53,9 +53,9 @@ public class DiagramGenerator
         _classBuilder.Clear();
         CsToMermaid.StartClassDiagram(_classBuilder) ;
         
-        foreach (var aggregateRoot in _domainTypes)
+        foreach (var domainType in _domainTypes)
         {
-            CreateClassRecursive(aggregateRoot);
+            CreateClassRecursive(domainType);
         }
 
         var content = _classBuilder.ToString() + _relationBuilder.ToString();
@@ -65,7 +65,7 @@ public class DiagramGenerator
 
     private void CreateClassRecursive(Type type)
     {
-        if (type.ShouldExcludeFromDiagram())
+        if (type.ShouldExcludeFromDiagram() || _passedTypes.Contains(type))
         {
             return;
         }
@@ -82,7 +82,7 @@ public class DiagramGenerator
             .ToList(); 
         
         CsToMermaid.CreateClass(_classBuilder, type, valueProperties);
-
+        
         CreateInheritance(type);
         
         foreach (var property in properties)
@@ -119,7 +119,7 @@ public class DiagramGenerator
             }
         }
         
-        var inheritors = _allTypesAssemblies.Where(t => t.IsSubclassOf(type));
+        var inheritors = _allTypesAssemblies.Where(t => t.IsSubclassOf(type) || t.InheritsFromGenericType(type));
 
         foreach (var inheritor in inheritors)
         {
@@ -134,10 +134,12 @@ public class DiagramGenerator
         
         if (baseType.IsGenericType && _allTypesAssemblies.Contains(baseType.GetGenericTypeDefinition()))
         {
+            CreateClassRecursive(baseType.GetGenericTypeDefinition());
             CsToMermaid.CreateInheritance(_relationBuilder, baseType.GetGenericTypeDefinition(), type);
         }
         else if (_allTypesAssemblies.Contains(baseType))
         {
+            CreateClassRecursive(baseType);
             CsToMermaid.CreateInheritance(_relationBuilder, baseType, type);
         }
     }
