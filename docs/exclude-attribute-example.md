@@ -23,7 +23,7 @@ public abstract class Aggregate<T>
 {
 }
 
-public class Auto : Aggregate<Auto>
+public class Car : Aggregate<Car>
 {
     public int Id { get; set; }
     public string Model { get; set; }
@@ -40,7 +40,7 @@ public class Wheels
 ### Output:
 ```mermaid
 classDiagram
-class Auto{
+class Car{
   +Int32 Id
   +String Model
 }
@@ -50,5 +50,5 @@ class Wheels{
   +String Type
 }
 
-Auto o-- Wheels
+Car o-- Wheels
 ```
