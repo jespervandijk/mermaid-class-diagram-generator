@@ -66,7 +66,7 @@ public class DiagramGenerator
 
     private void CreateClassRecursive(Type type)
     {
-        if (type.ShouldExcludeFromDiagram() || _passedTypes.Contains(type))
+        if (_passedTypes.Contains(type) || !ShouldIncludeInDiagram(type))
         {
             return;
         }
@@ -150,17 +150,29 @@ public class DiagramGenerator
     private void DocumentBaseType(Type type)
     {
         var baseType = type.BaseType;
-        if (baseType is null || baseType.ShouldExcludeFromDiagram()) return;
+        if (baseType is null || !ShouldIncludeInDiagram(baseType)) return;
 
-        if (baseType.IsGenericType && _allTypesAssemblies.Contains(baseType.GetGenericTypeDefinition()))
+        if (baseType.IsGenericType)
         {
             CreateClassRecursive(baseType.GetGenericTypeDefinition());
             CsToMermaid.CreateInheritance(_relationBuilder, baseType.GetGenericTypeDefinition(), type);
         }
-        else if (_allTypesAssemblies.Contains(baseType))
+        else
         {
             CreateClassRecursive(baseType);
             CsToMermaid.CreateInheritance(_relationBuilder, baseType, type);
         }
+    }
+
+    private bool ShouldIncludeInDiagram(Type type)
+    {
+        if (type.IsGenericType)
+        {
+            var genericType = type.GetGenericTypeDefinition();
+            return !genericType.HasExcludeAttribute() &&
+                   (_allTypesAssemblies.Contains(genericType) || _domainTypes.Contains(genericType));
+        }
+        return !type.HasExcludeAttribute() &&
+               (_allTypesAssemblies.Contains(type) || _domainTypes.Contains(type));
     }
 }

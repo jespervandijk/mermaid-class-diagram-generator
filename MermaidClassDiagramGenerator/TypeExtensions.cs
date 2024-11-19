@@ -5,7 +5,7 @@ namespace MermaidClassDiagramGenerator;
 
 public static class TypeExtensions
 {
-    public static bool ShouldExcludeFromDiagram(this Type type)
+    public static bool HasExcludeAttribute(this Type type)
     {
         return Attribute.IsDefined(type, typeof(ExcludeFromDiagramAttribute), inherit: false);
     }
