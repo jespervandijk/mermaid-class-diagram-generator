@@ -1,6 +1,6 @@
 # Mermaid Class Diagram Generator
 
-Effortlessly generate stunning Mermaid.js class diagrams from your C# domain models and export them to Markdown
+Effortlessly generate stunning Mermaid.js class diagrams from your C# models and export them to Markdown
 
 
 
@@ -118,10 +118,10 @@ namespace YourNamespace
 ```
 
 ### Parameters:
-- **outputFilePath (string)**: The file path where the generated Mermaid.js diagram will be saved. Important: The file must have a .md extension as the generator outputs the diagram in Markdown format, which supports Mermaid.js syntax.
-- **assembliesToScan (IEnumerable<Assembly>)**: A collection of assemblies that the generator will scan to discover domain classes. These assemblies should contain the classes you want to include in the diagram.
-- **domainTypes (IEnumerable<Type>)**: A list of domain class types that the generator should document. The generator processes these types recursively, meaning that if a domain class (e.g., Auto) has properties of other domain types (e.g., Wheels), those related types will also be included in the generated class diagram automatically.
-- **generateWithoutProperties (bool)**: A boolean flag indicating whether to generate the class diagram without including property details. If set to true, the diagram will display class names without listing their properties.
+- **outputFilePath (`string`)**: The file path where the generated Mermaid.js diagram will be saved. Important: The file must have a .md extension as the generator outputs the diagram in Markdown format, which supports Mermaid.js syntax.
+- **assembliesToScan (`IEnumerable<Assembly>`)**: A collection of assemblies that the generator will scan to discover domain classes. These assemblies should contain the classes you want to include in the diagram.
+- **domainTypes (`IEnumerable<Type>`)**: A list of domain class types that the generator should document. The generator processes these types recursively, meaning that if a domain class (e.g., Auto) has properties of other domain types (e.g., Wheels), those related types will also be included in the generated class diagram automatically.
+- **generateWithoutProperties (`bool`)**: A boolean flag indicating whether to generate the class diagram without including property details. If set to true, the diagram will display class names without listing their properties.
 
 ### Example Output
 
