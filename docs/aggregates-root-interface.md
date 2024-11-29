@@ -1,4 +1,4 @@
-## Get Aggregates Using an Interface
+## Find Aggregate Roots by Interface
 This example uses the `ImplementsGenericInterface` extension method to gather classes that implement a generic interface, like `IAggregate<T>`.
 This is useful when your aggregates implement a common interface. By passing only the classes implementing `IAggregate<T>` to the generator,
 recursive scanning will include any related types automatically (e.g., `Wheels`), giving you a full diagram of the aggregate structure without needing to specify each component explicitly.
