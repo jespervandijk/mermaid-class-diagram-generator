@@ -142,7 +142,7 @@ Car o-- Wheels
 ```
 
 ## 🔍 Advanced Examples
-- [Exclude Classes from the Diagram](docs/exclude-attribute-example.md)
+- [Exclude Classes from the Diagram](docs/exclude-attribute.md)
 
 The next four examples cover common Domain-Driven Design (DDD) scenarios, such as working with entities and aggregate roots. They show how the generator’s recursive functionality can automatically discover related entities and their relationships, reducing the need to manually specify every type. For aggregates, you only need to pass the aggregate roots, and the generator will handle the rest.
 - [Find Entities by Base Class](docs/entities-base-class.md)
