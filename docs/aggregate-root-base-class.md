@@ -1,4 +1,4 @@
-## Get Aggregates Using Inheritance
+## Find Aggregate Roots by Base Class
 This example demonstrates using the `InheritsFromGenericType` extension method to gather all classes that inherit from a generic base type, such as `Aggregate<T>`.
 This approach is useful when working with aggregate roots in your domain model.
 You only need to pass the aggregate root types to the generator, and the recursive scanning will automatically include related types (e.g., `Wheels`) in the diagram, ensuring a complete representation of the aggregate and its components.
